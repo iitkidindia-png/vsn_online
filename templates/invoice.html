@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="card shadow">
+  <div class="card-body">
+
+    <!-- SCHOOL HEADER -->
+    <div class="text-center mb-3">
+      <h3>Vivekananda Shiksha Niketan</h3>
+      <p>Ambassa, Dhalai, Tripura</p>
+      <p><b>Student:</b> {{ student_name }}</p>
+      <hr>
+    </div>
+
+    <!-- INVOICE INFO -->
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <strong>Invoice No:</strong> {{ invoice_no }}<br>
+        <strong>Date:</strong> {{ today }}
+      </div>
+      <div class="col-md-6 text-end">
+        <strong>Student:</strong> {{ student_name }}
+      </div>
+    </div>
+
+    <!-- TABLE -->
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Book</th>
+          <th>Qty</th>
+          <th>Total</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in data %}
+        <tr>
+          <td>{{ row[0] }}</td>
+          <td>{{ row[1] }}</td>
+          <td>₹{{ row[2] }}</td>
+          <td>{{ row[3] }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <!-- TOTAL -->
+    <h4 class="text-end">Grand Total: ₹{{ total }}</h4>
+
+    <hr>
+
+    <!-- FOOTER -->
+    <div class="text-center">
+      <p>Thank you!</p>
+      <button class="btn btn-primary" onclick="window.print()">Print</button>
+      <a href="/invoice_pdf/{{ sid }}" class="btn btn-success">Download PDF</a>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}

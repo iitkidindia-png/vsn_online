@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card shadow-sm">
+  <div class="card-header">Students</div>
+  <div class="table-responsive">
+    <table class="table table-striped mb-0">
+      <thead><tr><th>ID</th><th>Name</th><th>Roll</th><th>Class</th></tr></thead>
+      <tbody>
+      {% for s in students %}
+        <tr><td>{{ s[0] }}</td><td>{{ s[1] }}</td><td>{{ s[2] }}</td><td>{{ s[3] }}</td></tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
